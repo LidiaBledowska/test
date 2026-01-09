@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Wdzięcznik</title>
+
+</head>
+
+<body>
+    <div id="titleApp">Wdzięcznik</div>
+    <div id="mainSection">
+        <p id="todayDate">Data</p>
+        <div id="mainInput">
+            <input id="textUser" placeholder="Napisz co miłego wydarzyło się w Twoim życiu.">
+            <button id="entryBtn">Zapisz</button>
+        </div>
+    </div>
+    <dialog id="confirmDialog">
+        <div class="dialogActions">
+            <p>Masz już wpis na dziś. Nadpisać?</p>
+            <button id="cancelBtn">Anuluj</button>
+            <button id="overwriteBtn">Tak, zapisz</button>
+        </div>
+    </dialog>
+    <div id="calendar">
+        <div id="calendar-header">
+            <button id="prev-month">⬅️</button>
+            <h2 id="month-label">Miesiąc</h2>
+            <button id="next-month">➡️</button>
+        </div>
+        <div id="weekDays"></div>
+        <div id="daysGrid"></div>
+    </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
+

@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    margin: 10px;
+    width: 90%;
+}
+
+#mainSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#mainInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#entryBtn {
+    color: white;
+    border-color: white;
+    width: 80%;
+    max-width: 225px;
+    padding: 10px;
+    border-radius: 10px;
+    align-self: center;
+    margin: 10px;
+    background-color: rgb(160, 94, 160);
+    transition: background-color 0.2s ease transform 0.2s ease box-shadow 0.2s ease;
+}
+
+#entryBtn:hover {
+    background-color: rgb(236, 181, 236);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px 3px(0, 0, 0, 0.25)
+}
+
+#textUser {
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+
+}
+
+#titleApp {
+    text-align: center;
+    font-size: 30px;
+}
+
+
+#calendar {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+
+}
+
+#calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+}
+
+
+#weekDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+
+}
+
+#daysGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 6px;
+
+}
+
+.day {
+    min-height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+}
+
+#confirmDialog {
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    font-size: 16px;
+    margin: auto;
+}
+
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+
+}
+
+
+.dialogActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+
+#overwriteBtn {
+    background: rgb(160, 94, 160);
+    color: white;
+    border-radius: 12px;
+}
+
+#overwriteBtn:hover {
+    background: rgb(236, 181, 236);
+}
+
+#cancelBtn {
+    background: rgb(160, 94, 160);
+    color: white;
+    border-radius: 12px;
+}
+
+#cancelBtn:hover {
+    background: rgb(236, 181, 236);
+}
+
+#confirmDialog button {
+    padding: 12px 18px;
+    font-size: 16px;
+    line-height: 1.2;
+    min-height: 40px;
+}
