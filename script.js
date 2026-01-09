@@ -7,6 +7,7 @@ const daysGridJS = document.getElementById("daysGrid"
 const confirmDialogJS = document.getElementById("confirmDialog")
 const cancelBtnJS = document.getElementById("cancelBtn")
 const overwriteBtnJS = document.getElementById("overwriteBtn")
+const notesJS = document.getElementById("notes")
 
 function getTodayKey() {
     return new Date().toISOString().slice(0, 10)
@@ -36,13 +37,14 @@ function saveData() {
     }
 }
 
-function onCancel () {
+function onCancel() {
     confirmDialogJS.close()
+    textUserJS.value = ""
 }
 
-function onOverwrite () {
+function onOverwrite() {
     localStorage.setItem(getTodayKey(), textUserJS.value.trim())
-    textUserJS.value= ""
+    textUserJS.value = ""
     return onCancel()
 }
 
@@ -75,8 +77,28 @@ function getTodayDate() {
 }
 
 
+function showNotes() {
+    notesJS.textContent = ""
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i)
+        const value = localStorage.getItem(key)
+        const child = document.createElement("div")
+        child.textContent = `${key} - ${value}`
+        notesJS.appendChild(child)
+    }
+}
+
+/* dostęp do localstorage 
+pokazać 7 osttanich wpisów
+jeśli dla jakiejś daty nie było to po prostu "Brak wpisu"*/
+
+
+
 entryBtnJS.addEventListener('click', saveData)
 cancelBtnJS.addEventListener('click', onCancel)
 overwriteBtnJS.addEventListener('click', onOverwrite)
 getTodayDate()
 showWeekDays()
+showNotes()
+
+
