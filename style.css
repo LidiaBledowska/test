@@ -60,17 +60,37 @@ body {
 
 
 #calendar {
-    width: 100%;
-    max-width: 360px;
+    width: 380px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.3); 
     margin: 0 auto;
-
+    margin-top: 15px;
 }
 
-#calendar-header {
+#calendarHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
+    padding: 10px;
+}
+
+#calendarHeader button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: #ffff;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 4px rgba(0 0 0 0.2)
 
 }
 
@@ -82,18 +102,18 @@ body {
 
 }
 
-#daysGrid {
+.days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(6, 1fr);
     gap: 6px;
 
 }
 
 .day {
-    min-height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    text-align:center;
+    padding:5px;
+    color: grey;
+
 
 }
 
@@ -148,4 +168,13 @@ dialog::backdrop {
     font-size: 16px;
     line-height: 1.2;
     min-height: 40px;
+}
+
+
+#notes {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 370px;
 }

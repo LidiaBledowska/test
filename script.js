@@ -9,6 +9,12 @@ const cancelBtnJS = document.getElementById("cancelBtn")
 const overwriteBtnJS = document.getElementById("overwriteBtn")
 const notesJS = document.getElementById("notes")
 
+const monthYearLabelJS = document.getElementById("monthYearLabel")
+const datesJS = document.getElementById("dates")
+const prevBtnJS = document.getElementById("prevBtn")
+const nextBtnJS = document.getElementById("nextBtn")
+
+
 function getTodayKey() {
     return new Date().toISOString().slice(0, 10)
 }
@@ -88,10 +94,16 @@ function showNotes() {
     }
 }
 
+
 /* dostęp do localstorage 
 pokazać 7 osttanich wpisów
 jeśli dla jakiejś daty nie było to po prostu "Brak wpisu"*/
 
+
+function showCalendar () {
+
+    for (let i=0; i < 
+}
 
 
 entryBtnJS.addEventListener('click', saveData)
