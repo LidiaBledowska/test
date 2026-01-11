@@ -10,9 +10,10 @@ const overwriteBtnJS = document.getElementById("overwriteBtn")
 const notesJS = document.getElementById("notes")
 
 const monthYearLabelJS = document.getElementById("monthYearLabel")
-const datesJS = document.getElementById("dates")
-const prevBtnJS = document.getElementById("prevBtn")
-const nextBtnJS = document.getElementById("nextBtn")
+const prevBtnJS = document.getElementById("prevMonth")
+const nextBtnJS = document.getElementById("nextMonth")
+
+
 
 
 function getTodayKey() {
@@ -100,10 +101,55 @@ pokazać 7 osttanich wpisów
 jeśli dla jakiejś daty nie było to po prostu "Brak wpisu"*/
 
 
-function showCalendar () {
 
-    for (let i=0; i < 
+let currentDate = new Date()
+
+const updateCalendar = () => {
+    const currentYear = currentDate.getFullYear()
+    const currentMonth = currentDate.getMonth()
+
+    const firstDayOfMonth = new Date(currentYear, currentMonth, 1)
+    const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0)
+    const totalDays = lastDayOfMonth.getDate()
+    const firstDayIndex = (firstDayOfMonth.getDay() + 6) % 7
+    const lastDayIndex = (lastDayOfMonth.getDay() + 6) % 7
+
+    const monthYearString = currentDate.toLocaleString("pl-PL", {
+        month: "long",
+        year: "numeric",
+    })
+    monthYearLabelJS.textContent = monthYearString
+
+    let datesHtml = ""
+    for (let i = firstDayIndex; i > 0; i--) {
+        const prevDate = new Date(currentYear, currentMonth, 0 - i + 1)
+        datesHtml += `<div class="day inactive">${prevDate.getDate()}</div>`
+    }
+
+    for (let i = 1; i <= totalDays; i++) {
+        const date = new Date(currentYear, currentMonth, i)
+        const isToday = date.toDateString() === new Date().toDateString()
+        const activeClass = isToday ? "active" : ""
+        datesHtml += `<div class="day ${activeClass}">${i}</div>`
+    }
+
+    for (let i = 1; i <= 6 - lastDayIndex; i++) {
+        const nextDate = new Date(currentYear, currentMonth + 1, i)
+        datesHtml += `<div class="day inactive">${nextDate.getDate()}</div>`
+    }
+
+    daysGridJS.innerHTML = datesHtml
 }
+
+prevBtnJS.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() - 1)
+    updateCalendar()
+})
+
+nextBtnJS.addEventListener("click", () => {
+    currentDate.setMonth(currentDate.getMonth() + 1)
+    updateCalendar()
+})
 
 
 entryBtnJS.addEventListener('click', saveData)
@@ -112,5 +158,5 @@ overwriteBtnJS.addEventListener('click', onOverwrite)
 getTodayDate()
 showWeekDays()
 showNotes()
-
+updateCalendar()
 
