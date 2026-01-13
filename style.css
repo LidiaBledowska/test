@@ -177,13 +177,13 @@ dialog::backdrop {
 }
 
 
-#notes {
+/*#notes {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0 auto;
     max-width: 370px;
-}
+}*/
 
 .dates {
     display: grid;
@@ -207,9 +207,9 @@ dialog::backdrop {
     transition: 0.2s;
 }
 
-.date:hover
+.date:hover,
 .date.active {
-    background: red;
+    background: purple;
     color: white;
 }
 
@@ -217,6 +217,13 @@ dialog::backdrop {
     color: grey;
 }
 
+
 .date.inactive:hover {
-    color:#ffff;
+    color: grey;
+    background:none;
+}
+
+.weekend .day{
+    border-radius:10px;
+    background-color: rgb(185, 131, 185)    
 }

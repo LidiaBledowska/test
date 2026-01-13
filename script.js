@@ -1,9 +1,8 @@
 const todayDateJS = document.getElementById("todayDate")
 const textUserJS = document.getElementById("textUser")
 const entryBtnJS = document.getElementById("entryBtn")
-const weekDaysJS = document.getElementById("weekDays")
-const daysGridJS = document.getElementById("daysGrid"
-)
+const weekDaysJS = document.querySelector(".days")
+const daysGridJS = document.getElementById("dates")
 const confirmDialogJS = document.getElementById("confirmDialog")
 const cancelBtnJS = document.getElementById("cancelBtn")
 const overwriteBtnJS = document.getElementById("overwriteBtn")
@@ -56,17 +55,18 @@ function onOverwrite() {
 }
 
 
-function showWeekDays() {
+/*function showWeekDays() {
     const weekDaysNames = ["Pon", "Wt", "Śr", "Czw", "Pt", "Sob", "Ndz"]
     weekDaysJS.innerHTML = "";
 
     for (const day of weekDaysNames) {
         const el = document.createElement("div");
+        el.classList.add("day")
         el.textContent = day
         weekDaysJS.appendChild(el)
     }
 
-}
+} */
 
 /*function showCalendar (year, month) {
     daysGrid.innerHTL = "";
@@ -84,7 +84,7 @@ function getTodayDate() {
 }
 
 
-function showNotes() {
+/*function showNotes() {
     notesJS.textContent = ""
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i)
@@ -93,7 +93,7 @@ function showNotes() {
         child.textContent = `${key} - ${value}`
         notesJS.appendChild(child)
     }
-}
+}*/
 
 
 /* dostęp do localstorage 
@@ -120,26 +120,47 @@ const updateCalendar = () => {
     })
     monthYearLabelJS.textContent = monthYearString
 
-    let datesHtml = ""
+
+      datesJS.innerHTML = ""
     for (let i = firstDayIndex; i > 0; i--) {
         const prevDate = new Date(currentYear, currentMonth, 0 - i + 1)
-        datesHtml += `<div class="day inactive">${prevDate.getDate()}</div>`
+        const el = document.createElement("div");
+        el.className = "date inactive"
+        el.textContent = prevDate.getDate()
+        datesJS.appendChild(el)
     }
+
+    for (let i=lastDayIndex;i<7;i++) {
+        const nextDate = new Date(currentYear,currentMonth + 1, i)
+        const el = document.createElement("div")
+        el.className = "date inactive"
+        el.textContent = nextDate.getDate()
+        datesJS.appendChild(el)
+    }
+
+
+
+
+
+
+
+
 
     for (let i = 1; i <= totalDays; i++) {
         const date = new Date(currentYear, currentMonth, i)
         const isToday = date.toDateString() === new Date().toDateString()
         const activeClass = isToday ? "active" : ""
-        datesHtml += `<div class="day ${activeClass}">${i}</div>`
+        datesHtml += `<div class="date ${activeClass}">${i}</div>`
     }
 
     for (let i = 1; i <= 6 - lastDayIndex; i++) {
         const nextDate = new Date(currentYear, currentMonth + 1, i)
-        datesHtml += `<div class="day inactive">${nextDate.getDate()}</div>`
+        datesHtml += `<div class="date inactive">${nextDate.getDate()}</div>`
     }
 
     daysGridJS.innerHTML = datesHtml
 }
+
 
 prevBtnJS.addEventListener("click", () => {
     currentDate.setMonth(currentDate.getMonth() - 1)
@@ -151,12 +172,12 @@ nextBtnJS.addEventListener("click", () => {
     updateCalendar()
 })
 
+function
 
-entryBtnJS.addEventListener('click', saveData)
+    entryBtnJS.addEventListener('click', saveData)
 cancelBtnJS.addEventListener('click', onCancel)
 overwriteBtnJS.addEventListener('click', onOverwrite)
 getTodayDate()
-showWeekDays()
-showNotes()
+/*showWeekDays()*/
+/*showNotes()*/
 updateCalendar()
-
